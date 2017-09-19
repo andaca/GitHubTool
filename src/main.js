@@ -1,4 +1,4 @@
-import { configFile } from './config'
+import { config, configFile } from './config'
 import configure from './configure-ght'
 import initRepository from './initialise-repository'
 
@@ -42,7 +42,7 @@ require('yargs')
             describe: 'Show verbose output',
             default: false
         }
-    }, argv => initRepository(argv))
+    }, argv => initRepository(argv, config.token))
     .demandCommand(1, `Type 'ght [command] --help' for more info`)
     .help()
     .argv

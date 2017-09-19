@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && babel src -d dist",
-    "start": "npm run build && node dist/main.js"
+    "start": "npm run build && node dist/main.js",
+    "test": "mocha --compilers js:babel-core/register tests/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/andaca/ghinit#readme",
   "dependencies": {
     "node-fetch": "^1.7.3",
+    "rambda": "^0.9.1",
     "readline-sync": "^1.4.7",
     "yargs": "^8.0.2"
   },
@@ -27,6 +29,9 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1"
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3"
   }
 }

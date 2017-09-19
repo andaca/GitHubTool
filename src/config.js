@@ -1,6 +1,7 @@
 import os from 'os'
 import fs from 'fs'
 
+
 export const configFile = (() => os.homedir() + '/.ght_conf')()
 
 export const config = (() => {

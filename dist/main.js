@@ -50,5 +50,5 @@ require('yargs').usage('$0 <cmd> [args]').command('configure', 'Configure your g
         default: false
     }
 }, function (argv) {
-    return (0, _initialiseRepository2.default)(argv);
+    return (0, _initialiseRepository2.default)(argv, _config.config.token);
 }).demandCommand(1, 'Type \'ght [command] --help\' for more info').help().argv;
