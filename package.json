@@ -1,24 +1,26 @@
 {
-  "name": "ghinit",
+  "name": "GitHubTool",
   "version": "1.0.0",
   "description": "A script to initialise a github repository from the command line",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "npm run clean && babel src -d dist",
-    "start": "npm run build && node dist/main.js",
+    "clean": "rm -rf build",
+    "build-dev": "npm run clean && babel src -d build -s --watch",
+    "clean-dist": "rm -rf dist",
+    "build-dist": "npm run clean-dist && mkdir dist && babel src -o dist/ght.js --presets babili",
+    "start": "node build/main.js",
     "test": "mocha --compilers js:babel-core/register tests/*.test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andaca/ghinit.git"
+    "url": "git+https://github.com/andaca/githubtool.git"
   },
   "author": "Andrew Cameron",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/andaca/ghinit/issues"
+    "url": "https://github.com/andaca/GitHubTool/issues"
   },
-  "homepage": "https://github.com/andaca/ghinit#readme",
+  "homepage": "https://github.com/andaca/GitHubTool#readme",
   "dependencies": {
     "node-fetch": "^1.7.3",
     "rambda": "^0.9.1",

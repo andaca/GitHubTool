@@ -1,4 +1,7 @@
+**/.DS_Store
 *.token
+**/build
+**/dist
 
 # Logs
 logs
