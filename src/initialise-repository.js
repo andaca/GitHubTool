@@ -1,13 +1,8 @@
 import fetch from 'node-fetch'
 import { pipe } from 'rambda'
 import { exec } from 'child_process'
-import { config } from './config'
+import { objectSubset } from './utility-functions'
 
-const objectSubset = (object, fields) =>
-  fields.reduce((obj, field) => {
-    obj[field] = object[field]
-    return obj
-  }, {})
 
 const stringify = obj =>
   Object.keys(obj).reduce((str, key) =>
@@ -40,7 +35,7 @@ const cloneRepo = url =>
     [error, stdout, stderr].forEach(x => { if (x) console.log(x) })
   })
 
-const initRepository = (opts, token) => {
+const initialiseRepository = (opts, token) => {
   post(token, JSON.stringify(makeRequestBody(opts)))
     .then(response => response.json())
     .then(data => {
@@ -62,4 +57,4 @@ export {
 }
 // end:: exports for testing
 
-export default initRepository
+export default initialiseRepository

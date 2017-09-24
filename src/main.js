@@ -3,7 +3,10 @@
 import yargs from 'yargs'
 import { config, configFile } from './config'
 import configure from './configure-ght'
-import initRepository from './initialise-repository'
+import initialiseRepository from './initialise-repository'
+import listRepositories from './list-repositories'
+import removeRepository from './remove-repository'
+
 
 yargs
   .usage('$0 <cmd> [args]')
@@ -45,7 +48,22 @@ yargs
       describe: 'Show verbose output',
       default: false
     }
-  }, argv => initRepository(argv, config.token))
+  }, argv => initialiseRepository(argv, config.token))
+
+  .command('list', 'list all repositories', {}, () => listRepositories(config.token))
+
+  .command('remove [repo-name]', 'Remove a repository from GitHub. THIS IS IRREVERSABLE!', {
+    repositoryName: {
+      describe: 'Name of the repository',
+      demandOption: true
+    },
+    force: {
+      alias: 'f',
+      describe: 'Do not ask for confirmation',
+      default: false
+    }
+  }, argv => removeRepository(argv, config.username, config.token))
+
   .demandCommand(1, 'Type "ght [command] --help" for more info')
   .help()
   .argv
